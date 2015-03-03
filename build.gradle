@@ -1,5 +1,7 @@
 plugins {
   id 'java'
+  id 'application'
+  id "com.bmuschko.docker-java-application" version "2.0.2"
 }
 
 description = 'basic gradle build'
@@ -12,7 +14,8 @@ repositories {
 
 dependencies {
 
-  compile("com.google.guava:guava:$guava_version",
+  compile("com.google.guava:guava:${guava_version}",
+      "org.java-websocket:Java-WebSocket:${websocket_version}",
       "com.google.code.findbugs:jsr305:${jsr305_version}",
       "org.slf4j:slf4j-api:${slf4j_api_version}",
       "ch.qos.logback:logback-classic:${logback_version}")
@@ -26,8 +29,8 @@ dependencies {
 
 tasks.withType(JavaCompile) {
   description = "javac: ignore processor hints, keep all other hints"
-  sourceCompatibility = JavaVersion.VERSION_1_8
-  targetCompatibility = JavaVersion.VERSION_1_8
+  sourceCompatibility = JavaVersion.VERSION_1_7
+  targetCompatibility = JavaVersion.VERSION_1_7
   options.compilerArgs += ["-Xlint:all,-processing"]
 }
 
@@ -40,3 +43,11 @@ test {
   return useTestNG()
 }
 
+mainClassName = 'griffio.Main'
+
+docker {
+    javaApplication {
+        baseImage = 'azul/zulu-openjdk:7'
+        maintainer = 'griffio "griffio@users.noreply.github.com"'
+    }
+}
