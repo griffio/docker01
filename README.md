@@ -1,4 +1,20 @@
 # docker01
+
+## setup
+
+Docker service setup 
+~~~
+sudo systemctl enable docker
+~~~
+Add current user to docker group to avoid use of sudo
+~~~
+sudo gpasswd -a griffio docker
+~~~
+Restart the system, check docker commands run without sudo
+~~~
+docker images
+~~~
+
 ## docker java chat
 
 ### Java base images
