@@ -49,5 +49,6 @@ docker {
     javaApplication {
         baseImage = 'azul/zulu-openjdk:7'
         maintainer = 'griffio "griffio@users.noreply.github.com"'
+        tag = 'griffio/docker01'
     }
 }
