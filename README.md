@@ -39,3 +39,26 @@ Docker run command - localhost:8080 on actual host will expose the docker run po
 ~~~
  sudo docker run --publish="8080:8080" --hostname="docker01" -it --rm griffio/docker01 docker01 8080
 ~~~
+
+Create file /etc/systemd/system/docker-tcp.socket 
+~~~
+[Unit]
+Description=Docker Socket for the API
+
+[Socket]
+ListenStream=2375
+BindIPv60Only=both
+Service=docker.service
+
+[Install]
+WantedBy=sockets.target
+~~~
+
+commands
+~~~
+systemctl enable docker-tcp.socket
+sudo netstat -tunlp
+~~~
+
+Restart system
+
