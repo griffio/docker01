@@ -1,6 +1,12 @@
 # docker01
 
+Use gradle plugin "com.bmuschko.docker" to package and deploy to local docker repository.
+
+It requires the docker remote api (tcp) to be enabled via http (127.0.0.1).
+
 ## setup
+
+For Linux
 
 Docker service setup 
 ~~~
