@@ -38,12 +38,17 @@ EXPOSE 8080
 
 Application image tagged
 ~~~
-sudo docker build -t="griffio/docker01" build/docker
+docker build -t="griffio/docker01" build/docker
 ~~~
 
 Docker run command - localhost:8080 on actual host will expose the docker run port 8080
 ~~~
- sudo docker run --publish="8080:8080" --hostname="docker01" -it --rm griffio/docker01 docker01 8080
+docker run --publish="8080:8080" --hostname="docker01" -it griffio/docker01 docker01 8080
+~~~
+
+Docker ps command in another terminal
+~~~
+docker ps
 ~~~
 
 Create file /etc/systemd/system/docker-tcp.socket 
