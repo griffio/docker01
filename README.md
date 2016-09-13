@@ -1,4 +1,4 @@
-# docker01
+# example-docker01
 
 Use gradle plugin "com.bmuschko.docker" to package and deploy to local docker repository.
 
